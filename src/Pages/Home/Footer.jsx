@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <div data-aos="zoom-in" data-aos-duration="2000" className="border-2 p-5 lg:p-16 bg-black text-white">
+        <div data-aos="zoom-in" data-aos-duration="2000" className="p-5 lg:p-16 bg-black text-white">
             <footer className="footer flex justify-center lg:mx-24 ">
                 <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-10">
                     <aside className="lg:row-span-2 col-span-2 md:col-span-4 lg:col-span-1 mb-6 flex flex-col justify-center space-y-2 h-full">

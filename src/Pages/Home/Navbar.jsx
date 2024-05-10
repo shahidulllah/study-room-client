@@ -1,43 +1,51 @@
-// import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../../Components/AuthProvider";
+
 
 
 const Navbar = () => {
-    // const [theme, setTheme] =useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+    const { user, logOut } = useContext(AuthContext);
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
-    // useEffect(()=>{
-    //     localStorage.setItem("theme", theme);
-    //     const localTheme = localStorage.getItem("theme");
-    //     document.querySelector("html").setAttribute("data-theme", localTheme);
-    // },[theme]);
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute("data-theme", localTheme);
+    }, [theme]);
 
 
-    // //handle theme
-    // const handleTheme = (e)=>{
-    //     if(e.target.checked){
-    //         setTheme("dark");
-    //     } else{
-    //         setTheme("light");
-    //     }
-    // }
-    // const { user, logOut } = useContext(AuthContext);
+    //handle theme
+    const handleTheme = (e) => {
+        if (e.target.checked) {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    }
 
-    // // Handle Log out
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then(() => console.log('User Logged out'))
-    //         .catch(error => console.error(error))
-    // }
+
+    // Handle Log out
+    const handleLogOut = () => {
+        logOut()
+            .then(() => console.log('User Logged out'))
+            .catch(error => console.error(error))
+    }
 
     const navlinks = <>
         <li><NavLink to='/assignments'>Assigments</NavLink></li>
-        <li><NavLink to='/allCraft'>Create Assignments</NavLink></li>
-        <li><NavLink to='/addItemForm'>Pending Assignments</NavLink></li>
+        {
+            user &&
+            <>
+                <li><NavLink to='/allCraft'>Create Assignments</NavLink></li>
+                <li><NavLink to='/addItemForm'>Pending Assignments</NavLink></li>
+            </>
+        }
+
 
     </>
     return (
-        <div className=" ">
+        <div className=" lg:mt-2 lg:mb-2">
             <div className="text-center p-4 lg:mx-24">
                 <header className="p-3">
                     <div className="container flex justify-between h-12 mx-auto">
@@ -47,13 +55,13 @@ const Navbar = () => {
                                 <h1><span className="bg-red-500 text-white rounded-2xl font-bold px-4 py- text-2xl font-serif">Room</span></h1>
                             </div>
                         </Link>
-                        <div className="navbar-center hidden lg:flex  justify-center">
-                            <ul className="menu menu-horizontal flex gap-7 items-center font-bold text-slate-500">
+                        <div className="navbar-center hidden lg:flex  justify-end w-8/12">
+                            <ul className="menu menu-horizontal flex gap-6 items-center font-bold text-slate-800">
                                 {navlinks}
                             </ul>
                         </div>
                         <div className="items-center flex-shrink-0 hidden lg:flex">
-                            <div className="flex items-center justify-center  p-2 ">
+                            <div onChange={handleTheme} className="flex items-center justify-center  px-7 ">
                                 <label className="swap swap-rotate">
 
                                     {/* this hidden checkbox controls the state */}
@@ -67,23 +75,35 @@ const Navbar = () => {
 
                                 </label>
                             </div>
-                            
-                            <NavLink to='/login'> <button className="self-center btn-ghost px-3 py-1  font-semibold rounded">Login</button></NavLink>
-                            <NavLink to='/register'> <button className="self-center btn-ghost px-3 py-1 mr-4 font-semibold rounded">Register</button></NavLink>
 
-
-
-                            <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role="butto" className="btn btn-ghost btn-circle">
-                                    <div className="w-12 tooltip" data-tip="Shahidullah">
-                                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" className="rounded-full" alt="" />
-                                    </div>
-                                </div>
-                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
-                                    <li className="border-slate-300 border-b"><button>My Assignments</button></li>                       
-                                    <li><button>Log Out</button></li>
-                                </ul>
+                            <div>
+                                {
+                                    !user &&
+                                    <>
+                                        <NavLink to='/login'> <button className="self-center btn-ghost px-3 py-1  font-semibold rounded">Login</button></NavLink>
+                                        <NavLink to='/register'> <button className="self-center btn-ghost px-3 py-1 mr-4 font-semibold rounded">Register</button></NavLink>
+                                    </>
+                                }
                             </div>
+
+                            {
+                                user &&
+                                <>
+                                    <div className="dropdown dropdown-end">
+                                        <div tabIndex={0} role="butto" className="btn btn-ghost btn-circle">
+                                            <div className="w-12 tooltip" title={user?.displayName
+                                            }>
+                                                <img src={user?.photoURL || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"} className="rounded-full" alt="" />
+                                            </div>
+                                        </div>
+                                        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
+                                            <li className="border-slate-300 border-b"><button>My Assignments</button></li>
+                                            <li><button onClick={handleLogOut}>Log Out</button></li>
+                                        </ul>
+                                    </div>
+                                </>
+                            }
+
 
                         </div>
                         <button className="p-4 lg:hidden">
@@ -92,12 +112,24 @@ const Navbar = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg></div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52 border-slate-300 border-b">
+                                   {
+                                    user &&  <div className="flex flex-col items-center justify-center">
+                                    <div className=" w-9 mb-2 ">
+                                        <img className="rounded-full" src={user?.photoURL || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"} />
+                                    </div>
+                                    <div className="text-center font-serif mb-3 border-b-">
+                                        <h1 className="font-semibold">{user?.displayName}</h1>
+                                    </div>
+                                </div>
+                                   }
                                     {navlinks}
-                                    <li><button>My Assignments</button></li>
-                                    <li className="border-slate-300 border-b"><Link to="/login">Login</Link></li>
-                                    <li><button>Log Out</button></li>
-                                    
+                                   {user && <li><button>My Assignments</button></li>}
+                                   { !user && 
+                                   <li><Link to="/login">Login</Link></li>}
+                                    {user&& <li><button onClick={handleLogOut}>Log Out</button></li>}
+
                                 </ul>
+
                             </div>
                         </button>
                     </div>
