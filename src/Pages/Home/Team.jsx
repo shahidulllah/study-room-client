@@ -2,9 +2,9 @@
 
 const Team = () => {
     return (
-        <div className="mt-16">
+        <div className="">
             <section className="bg-white dark:bg-gray-900">
-                <div className="container px-6 py-10 mx-auto">
+                <div className="container px-6 pb-12 mx-auto">
                     <h1 className="text-2xl font-bold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">Executive Team</h1>
 
                     <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">

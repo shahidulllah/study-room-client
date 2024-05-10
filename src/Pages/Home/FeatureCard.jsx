@@ -3,7 +3,7 @@
 const FeatureCard = () => {
     return (
         <div>
-            <div className="flex flex-col items-center justify-center p-16 pb-10 space-y-5">
+            <div className="flex flex-col items-center justify-center p-5 pb-10 space-y-5">
                 <h1 className="text-4xl lg:text-5xl font-bold text-center">Our Exclusive Session</h1>
                 <p className="text-center lg:w-6/12 text-gray-600">Credibly transform value-added total linkage and virtual human capital. Assertively network competitive collaboration and idea-sharing after empowered customer service. Enthusiastically iterate alternative.</p>
             </div>
