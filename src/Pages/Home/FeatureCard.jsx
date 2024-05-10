@@ -4,7 +4,7 @@ const FeatureCard = () => {
     return (
         <div>
             <div className="flex flex-col items-center justify-center p-5 pb-10 space-y-5">
-                <h1 className="text-4xl lg:text-5xl font-bold text-center">Our Exclusive Session</h1>
+                <h1 className="text-3xl lg:text-5xl font-bold text-center">Our Exclusive Session</h1>
                 <p className="text-center lg:w-6/12 text-gray-600">Credibly transform value-added total linkage and virtual human capital. Assertively network competitive collaboration and idea-sharing after empowered customer service. Enthusiastically iterate alternative.</p>
             </div>
 
@@ -45,7 +45,7 @@ const FeatureCard = () => {
                             <div className="flex items-center">
                                 <div className="flex items-center">
                                     <img className="object-cover h-10 rounded-full" src="https://i.ibb.co/7Sm6JLv/team3.jpg" alt="Avatar"/>
-                                        <a href="#" className="mx-2 font-semibold text-gray-700 dark:text-gray-200"  role="link">Mst. Sufia Khanom</a>         
+                                        <a href="#" className="mx-2 font-semibold text-gray-700 dark:text-gray-200"  role="link">Sufia Khanom</a>         
                                 </div>
                                 <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2024</span>
                             </div>

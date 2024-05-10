@@ -89,7 +89,7 @@ const Team = () => {
                         <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-purple-900/50 dark:border-gray-700 dark:hover:border-transparent">
                             <img className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="https://i.ibb.co/7Sm6JLv/team3.jpg" alt=""/>
 
-                                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-black">Mst. Sufia khanom</h1>
+                                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-black">Sufia khanom</h1>
 
                                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-black">Senior Instructor</p>
 

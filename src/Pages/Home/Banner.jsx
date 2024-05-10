@@ -7,9 +7,9 @@ const Banner = () => {
                 <div id="slide1" className="carousel-item relative w-full  ">
 
                     {/* title */}
-                    <div className="bg-black/30 absolute w-full h-full flex flex-col justify-center items-center lg:items-start text-white P-8 space-y-10 lg:pl-16">
+                    <div className="bg-black/30 absolute  w-full h-full flex flex-col justify-center items-center lg:items-start text-white P-8 space-y-10 lg:pl-16">
                         <h1 className="text-3xl lg:text-6xl font-serif font-bold text-center animate__slow animate__animated animate__fadeInUp ">Proactively strategize tactical <br /> mindshare with.</h1>
-                        <h1 className="lg:text-3xl text-center animate__slow animate__animated animate__fadeInUp lg:ml-32 p-6 rounded-2xl bg-slate-200 text-indigo-900 ">Progressively syndicate extensible growth.</h1>
+                        <h1 className="lg:text-3xl text-center hidden lg:block animate__slow animate__animated animate__fadeInUp lg:ml-32 p-6 rounded-2xl bg-slate-200 text-indigo-900 ">Progressively syndicate extensible growth.</h1>
                     </div>
                     <img src="https://i.ibb.co/jRDpcq4/Banner-3.jpg" className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
