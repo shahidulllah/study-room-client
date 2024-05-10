@@ -37,7 +37,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className=" sticky z-50 w-full top-0">
+        <div className=" ">
             <div className="text-center p-4 lg:mx-24">
                 <header className="p-3">
                     <div className="container flex justify-between h-12 mx-auto">
@@ -79,8 +79,8 @@ const Navbar = () => {
                                         <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" className="rounded-full" alt="" />
                                     </div>
                                 </div>
-                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><button>My Attempted Assignments</button></li>                       
+                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52">
+                                    <li className="border-slate-300 border-b"><button>My Assignments</button></li>                       
                                     <li><button>Log Out</button></li>
                                 </ul>
                             </div>
@@ -91,10 +91,12 @@ const Navbar = () => {
                                 <div tabIndex={0} role="button" className="btn m-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-800">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg></div>
-                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52 border-slate-300 border-b">
                                     {navlinks}
-                                    <li><Link to="/login">Login</Link></li>
+                                    <li><button>My Assignments</button></li>
+                                    <li className="border-slate-300 border-b"><Link to="/login">Login</Link></li>
                                     <li><button>Log Out</button></li>
+                                    
                                 </ul>
                             </div>
                         </button>
