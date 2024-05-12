@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
         }, 
         {
             path: "/viewAssignment/:id",
-            element: <ViewAssignment></ViewAssignment>,
+            element: <PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
             loader: () => fetch(`${import.meta.env.VITE_API_URL}/assignments`)
         }, 
       ]
