@@ -9,6 +9,7 @@ import PrivateRoute from "../Components/PrivateRoute";
 import Assignment from "../Pages/Assignment";
 import Update from "../Pages/Update";
 import ViewAssignment from "../Pages/ViewAssignment";
+import TakeAssignment from "../Pages/TakeAssignment";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,9 @@ export const router = createBrowserRouter([
             path: "/createAssignment",
             element: <PrivateRoute><CreateAssignment></CreateAssignment></PrivateRoute>
         },
+        {
+            path: "/takeAssignment",
+            element: <TakeAssignment></TakeAssignment>        },
         {
             path: "/assignments",
             element: <Assignment></Assignment>,

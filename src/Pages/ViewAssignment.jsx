@@ -34,7 +34,7 @@ const ViewAssignment = () => {
                         </div>
                     </div>
                     <div className=" pt-12">
-                        <Link to={`/takeAssignment/${assignment._id}`}> <button type="button" className="flex btn bg-purple-300 items-center justify-center w-full font-extrabold tracking-wide rounded-md  "><span className='text-blue-700'><TbListDetails className='text-xl' /></span> Take Assignment</button></Link>
+                        <Link to='/takeAssignment'> <button type="button" className="flex btn bg-purple-300 items-center justify-center w-full font-extrabold tracking-wide rounded-md  "><span className='text-blue-700'><TbListDetails className='text-xl' /></span> Take Assignment</button></Link>
                     </div>
 
                 </div>
