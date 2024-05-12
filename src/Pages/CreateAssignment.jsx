@@ -13,13 +13,13 @@ const CreateAssignment = () => {
         const thumbnailImageURL = form.imageUrl.value;
         const description = form.description.value;
         const difficultyLevel = form.difficultyLevel.value;
-        const mark = form.mark.value;
+        const marks = form.mark.value;
         const date = form.date.value;
-        const assignment = {title, thumbnailImageURL, description, difficultyLevel, mark, date};
+        const assignment = {title, thumbnailImageURL, description, difficultyLevel, marks, date};
         console.log(assignment);
 
         //send assignment to server
-        fetch('http://localhost:5000/assignments', {
+        fetch(`${import.meta.env.VITE_API_URL}/assignments`, {
            method: 'POST',
            headers: {
             'content-type' : 'application/json'

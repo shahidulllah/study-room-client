@@ -33,7 +33,7 @@ const Navbar = () => {
     }
 
     const navlinks = <>
-        <li><NavLink to='/assignments'>Assigments</NavLink></li>
+        <li><NavLink to='/assignments'>Assignments</NavLink></li>
         {
             user &&
             <>
@@ -45,12 +45,12 @@ const Navbar = () => {
 
     </>
     return (
-        <div className=" lg:mt-2 lg:mb-2">
+        <div className=" lg:p-2 bg-blue-100 sticky top-0 z-50">
             <div className="text-center p-4 lg:mx-24">
                 <header className="p-3">
                     <div className="container flex justify-between h-12 mx-auto">
                         <Link to="/">
-                            <div className="flex flex-col justify-center items-center gap-1">
+                            <div className="flex flex-col justify-center items-center gap-1 -mt-4">
                                 <h1 className=""><span className="text-4xl font-bold">Study</span></h1>
                                 <h1><span className="bg-red-500 text-white rounded-2xl font-bold px-4 py- text-2xl font-serif">Room</span></h1>
                             </div>
