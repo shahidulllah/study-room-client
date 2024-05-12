@@ -1,15 +1,50 @@
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 
 
 const CreateAssignment = () => {
     const [startDate, setStartDate] = useState(new Date());
+    const handleCreate = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const title = form.title.value;
+        const thumbnailImageURL = form.imageUrl.value;
+        const description = form.description.value;
+        const difficultyLevel = form.difficultyLevel.value;
+        const mark = form.mark.value;
+        const date = form.date.value;
+        const assignment = {title, thumbnailImageURL, description, difficultyLevel, mark, date};
+        console.log(assignment);
+
+        //send assignment to server
+        fetch('http://localhost:5000/assignments', {
+           method: 'POST',
+           headers: {
+            'content-type' : 'application/json'
+           },
+           body: JSON.stringify(assignment) 
+        })
+        .then(res => res.json())
+        .then (data => {
+            console.log(data)
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Assignment Created Successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'Done'
+                })
+                form.reset()
+            }
+        })
+    }
     return (
         <div className="p-4 lg:mx-24">
-            <section className="lg:p-24 bg-gray-800 text-gray-50 my-4 rounded-xl">
-                <form noValidate="" action="" className="container flex flex-col mx-auto space-y-12">
-                    <fieldset className="grid grid-cols-4 gap-6 p-6 lg:p-16 rounded-md shadow-sm bg-gray-900">
+            <section className="lg:p-24 bg-gray-300 text-gray-50 mb-8">
+                <form onSubmit={handleCreate} noValidate="" action="" className="container flex flex-col mx-auto space-y-12">
+                    <fieldset className="grid grid-cols-4 gap-6 p-6 lg:p-16 rounded-md shadow-sm bg-gray-600">
                         <div className="space-y-2 col-span-full lg:col-span-1">
                             <p className="font-medium text-3xl ">Create <br /> an Assignment</p>
                             <p className="text-xs">Credibly create dynamic assignment after long-term high-impact infrastructures. Synergistically provide.</p>
@@ -42,10 +77,10 @@ const CreateAssignment = () => {
                             </div>
                             <div className="col-span-full sm:col-span-3 flex flex-col mt-1">
                                 <label htmlFor="zip" className="text-sm">Date</label>
-                                <ReactDatePicker className="w-full rounded-md focus:ring focus:ring-opacity-75 input text-gray-900 focus:ring-violet-400 border-gray-700" selected={startDate} onChange={(date) => setStartDate(date)} />  
+                                <ReactDatePicker className="w-full rounded-md focus:ring focus:ring-opacity-75 input text-gray-900 focus:ring-violet-400 border-gray-700" name="date" selected={startDate} onChange={(date) => setStartDate(date)} />  
                             </div>
                             <div className="col-span-full">
-                                <button className="btn w-full mt-10 bg-slate-300 font-extrabold">Create</button> 
+                                <button type="submit" className="btn w-full mt-10 bg-slate-300 font-extrabold">Create</button> 
                             </div>
                         </div>
                     </fieldset>

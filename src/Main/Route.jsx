@@ -5,6 +5,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import CreateAssignment from "../Pages/CreateAssignment";
+import PrivateRoute from "../Components/PrivateRoute";
+import Assignment from "../Pages/Assignment";
 
 
 export const router = createBrowserRouter([
@@ -27,7 +29,12 @@ export const router = createBrowserRouter([
         },
         {
             path: "/createAssignment",
-            element: <CreateAssignment></CreateAssignment>
+            element: <PrivateRoute><CreateAssignment></CreateAssignment></PrivateRoute>
+        },
+        {
+            path: "/assignments",
+            element: <Assignment></Assignment>,
+            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/assignments`)
         }
       ]
     },
