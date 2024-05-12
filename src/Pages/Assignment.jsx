@@ -106,7 +106,7 @@ const Assignment = () => {
                                     <div className='flex items-center justify-between'>
                                         <div className="flex items-center"><RiPriceTagLine className='mr-2'></RiPriceTagLine> <span className='font-bold mr-2'>Marks:</span> <span className='font-extrabold'>{assignment.marks}</span></div>
                                         <div>
-                                            <button className="p-2 bg-gray-200 rounded-xl hover:bg-gray-300" title="Update Assignment"><GrEdit className="text-lg" /></button>
+                                           <Link to={`/update/${assignment._id}`}> <button className="p-2 bg-gray-200 rounded-xl hover:bg-gray-300" title="Update Assignment"><GrEdit className="text-lg" /></button></Link>
                                         </div>
                                     </div>
 
@@ -118,7 +118,7 @@ const Assignment = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <Link to={`/viewDetails/${assignment._id}`}> <button type="button" className="flex btn  items-center justify-center w-full p-3 font-extrabold tracking-wide rounded-md  "><span className='text-blue-400'><TbListDetails className='text-xl' /></span> View Assignment</button></Link>
+                                    <Link to={`/viewAssignment/${assignment._id}`}> <button type="button" className="flex btn  items-center justify-center w-full p-3 font-extrabold tracking-wide rounded-md  "><span className='text-blue-400'><TbListDetails className='text-xl' /></span> View Assignment</button></Link>
                                 </div>
                             </div>
                         </div>
