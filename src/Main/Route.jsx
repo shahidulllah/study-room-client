@@ -14,44 +14,46 @@ import TakeAssignment from "../Pages/TakeAssignment";
 
 export const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Root></Root>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-            path: "/login",
-            element: <Login></Login>
-        },
-        {
-            path: "/register",
-            element: <Register></Register>
-        },
-        {
-            path: "/createAssignment",
-            element: <PrivateRoute><CreateAssignment></CreateAssignment></PrivateRoute>
-        },
-        {
-            path: "/takeAssignment",
-            element: <TakeAssignment></TakeAssignment>        },
-        {
-            path: "/assignments",
-            element: <Assignment></Assignment>,
-            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/assignments`)
-        },
-        {
-            path: "/update/:id",
-            element: <Update></Update>,
-            loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/assignments/${params.id}`)
-        }, 
-        {
-            path: "/viewAssignment/:id",
-            element: <PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
-            loader: () => fetch(`${import.meta.env.VITE_API_URL}/assignments`)
-        }, 
-      ]
+        path: "/",
+        element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>
+            },
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
+            },
+            {
+                path: "/createAssignment",
+                element: <PrivateRoute><CreateAssignment></CreateAssignment></PrivateRoute>
+            },
+            {
+                path: "/takeAssignment/:id",
+                element: <TakeAssignment></TakeAssignment>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/assignments`)
+            },
+            {
+                path: "/assignments",
+                element: <Assignment></Assignment>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/assignments`)
+            },
+            {
+                path: "/update/:id",
+                element: <Update></Update>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/assignments/${params.id}`)
+            },
+            {
+                path: "/viewAssignment/:id",
+                element: <PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/assignments`)
+            },
+        ]
     },
-  ]);
+]);

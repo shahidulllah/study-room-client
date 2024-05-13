@@ -1,15 +1,27 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Components/AuthProvider";
+import { useLoaderData, useParams } from "react-router-dom";
 
 const TakeAssignment = () => {
     const {user} = useContext(AuthContext);
-    const userEmail = user.email;
-    const [pdfLink, setPdfLink] = useState('');
-    const [notes, setNotes] = useState('');
+
+    const assignment = useLoaderData();
+    const { id } = useParams();
+    const takeAssignment = assignment.find(a => a._id == id);
+    console.log("From Api:",takeAssignment);
 
     const handleSubmit = e => {
         e.preventDefault();
+        const form = e.target;
+        const assignmentLink = form.pdfLink.value;
+        const notes = form.notes.value;
+        const title = takeAssignment.title;
+        const marks = takeAssignment.marks;
+        const status = "Pending";
+        const userEmail = user.email;
+
+        const takeAssign = {title, marks, userEmail, status, assignmentLink, notes};
 
         //send submited assignment to server
         fetch(`${import.meta.env.VITE_API_URL}/submited`, {
@@ -17,7 +29,7 @@ const TakeAssignment = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ pdfLink, notes, userEmail, status: 'pending' })
+            body: JSON.stringify(takeAssign)
         })
             .then(res => res.json())
             .then(data => {
@@ -25,12 +37,11 @@ const TakeAssignment = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Assignment Submited!',
+                        text: 'Assignment Submited Successfully!',
                         icon: 'success',
                         confirmButtonText: 'Done'
                     })
-                    setPdfLink('');
-                    setNotes('');
+                   form.reset()
                 }
             })
     }
@@ -47,8 +58,7 @@ const TakeAssignment = () => {
                     placeholder="Upload Your Assignment Link"
                     type="text"
                     id="pdfLink"
-                    value={pdfLink}
-                    onChange={(e) => setPdfLink(e.target.value)}
+                    name='pdfLink'
                 />
                 <br />
                 <label htmlFor="notes">Quick Notes:</label><br />
@@ -56,8 +66,7 @@ const TakeAssignment = () => {
                     placeholder="Include Your Notes here.."
                     className="textarea mb-4"
                     id="notes"
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
+                    name="notes"
                     rows="4"
                     cols="50"
                 />

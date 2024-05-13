@@ -7,7 +7,6 @@ const ViewAssignment = () => {
     const assignment = useLoaderData();
     const { id } = useParams();
     const detailAssignment = assignment.find(a => a._id == id);
-    console.log(detailAssignment)
     return (
         <div className="flex justify-center p-4 lg:p-16">
             <div className="max-w-lg p-5 shadow-md bg-gray-700 text-gray-100 rounded">
@@ -34,7 +33,7 @@ const ViewAssignment = () => {
                         </div>
                     </div>
                     <div className=" pt-12">
-                        <Link to='/takeAssignment'> <button type="button" className="flex btn bg-purple-300 items-center justify-center w-full font-extrabold tracking-wide rounded-md  "><span className='text-blue-700'><TbListDetails className='text-xl' /></span> Take Assignment</button></Link>
+                        <Link to={`/takeAssignment/${detailAssignment._id}`}> <button type="button" className="flex btn bg-purple-300 items-center justify-center w-full font-extrabold tracking-wide rounded-md  "><span className='text-blue-700'><TbListDetails className='text-xl' /></span> Take Assignment</button></Link>
                     </div>
 
                 </div>
