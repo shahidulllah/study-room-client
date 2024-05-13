@@ -10,6 +10,7 @@ import Assignment from "../Pages/Assignment";
 import Update from "../Pages/Update";
 import ViewAssignment from "../Pages/ViewAssignment";
 import TakeAssignment from "../Pages/TakeAssignment";
+import MyAssignment from "../Pages/MyAssignment";
 
 
 export const router = createBrowserRouter([
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
                 path: "/viewAssignment/:id",
                 element: <PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/assignments`)
+            },
+            {
+                path: "/myAssignment",
+                element: <PrivateRoute><MyAssignment></MyAssignment></PrivateRoute>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/submited`)
             },
         ]
     },

@@ -9,7 +9,6 @@ const TakeAssignment = () => {
     const assignment = useLoaderData();
     const { id } = useParams();
     const takeAssignment = assignment.find(a => a._id == id);
-    console.log("From Api:",takeAssignment);
 
     const handleSubmit = e => {
         e.preventDefault();
