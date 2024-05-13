@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Components/AuthProvider";
 
 const TakeAssignment = () => {
+    const {user} = useContext(AuthContext);
+    const userEmail = user.email;
     const [pdfLink, setPdfLink] = useState('');
     const [notes, setNotes] = useState('');
 
@@ -14,7 +17,7 @@ const TakeAssignment = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ pdfLink, notes })
+            body: JSON.stringify({ pdfLink, notes, userEmail, status: 'pending' })
         })
             .then(res => res.json())
             .then(data => {

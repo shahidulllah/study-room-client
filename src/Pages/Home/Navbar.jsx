@@ -80,8 +80,8 @@ const Navbar = () => {
                                 {
                                     !user &&
                                     <>
-                                        <NavLink to='/login'> <button className="self-center btn-ghost px-3 py-1  font-semibold rounded">Login</button></NavLink>
                                         <NavLink to='/register'> <button className="self-center btn-ghost px-3 py-1 mr-4 font-semibold rounded">Register</button></NavLink>
+                                        <NavLink to='/login'> <button className="self-center btn-ghost px-3 py-1  font-semibold rounded">Login</button></NavLink>
                                     </>
                                 }
                             </div>

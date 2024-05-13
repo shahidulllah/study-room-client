@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Components/AuthProvider";
 
 
 const CreateAssignment = () => {
+    const {user} = useContext(AuthContext);
+
     const [startDate, setStartDate] = useState(new Date());
     const handleCreate = e =>{
         e.preventDefault();
@@ -15,7 +18,8 @@ const CreateAssignment = () => {
         const difficultyLevel = form.difficultyLevel.value;
         const marks = form.mark.value;
         const date = form.date.value;
-        const assignment = {title, thumbnailImageURL, description, difficultyLevel, marks, date};
+        const userEmail = user.email
+        const assignment = {title, thumbnailImageURL, description, difficultyLevel, marks, date, userEmail};
         console.log(assignment);
 
         //send assignment to server

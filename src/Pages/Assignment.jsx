@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
@@ -7,38 +7,49 @@ import { RiDeleteBin6Line, RiPriceTagLine } from "react-icons/ri";
 import { TbListDetails } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Components/AuthProvider";
 
 
 const Assignment = () => {
+    const { user } = useContext(AuthContext)
     const assignments = useLoaderData();
+
 
     const [displayAssign, setDisplayAssign] = useState(assignments);
 
     const handleFilter = e => {
 
         console.log(e)
-            if(e === "All"){
-                setDisplayAssign(assignments);
+        if (e === "All") {
+            setDisplayAssign(assignments);
 
-            }
+        }
 
-            else if(e === "Easy"){
-                const easyAssignment = assignments.filter(a => a.difficultyLevel === "Easy");
-                setDisplayAssign(easyAssignment);
-            }
-            else if(e === "Medium"){
-                const mediumAssignment = assignments.filter(a => a.difficultyLevel === "Medium");
-                setDisplayAssign(mediumAssignment);
-            }
-            else if(e === "Hard"){
-                const hardAssignment = assignments.filter(a => a.difficultyLevel === "Hard");
-                setDisplayAssign(hardAssignment);
-            }
+        else if (e === "Easy") {
+            const easyAssignment = assignments.filter(a => a.difficultyLevel === "Easy");
+            setDisplayAssign(easyAssignment);
+        }
+        else if (e === "Medium") {
+            const mediumAssignment = assignments.filter(a => a.difficultyLevel === "Medium");
+            setDisplayAssign(mediumAssignment);
+        }
+        else if (e === "Hard") {
+            const hardAssignment = assignments.filter(a => a.difficultyLevel === "Hard");
+            setDisplayAssign(hardAssignment);
+        }
     }
 
 
-    const handleDelete = id => {
-        Swal.fire({
+    const handleDelete = (id, userEmail) => {
+        if ( userEmail !== user.email) {
+            Swal.fire({
+                icon: "error",
+                title: "Sorrrry...",
+                text: "You can't delete this!",
+                footer: '<p className="text-red-600">This is not your assignment. <br/> You can only delete the assignment which is created by you.</p>'
+            });
+        }
+      else { Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
             icon: "warning",
@@ -67,7 +78,7 @@ const Assignment = () => {
                         }
                     })
             }
-        });
+        });}
     }
     return (
         <div className="p-4 lg:mx-24">
@@ -83,10 +94,10 @@ const Assignment = () => {
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className=" bg-violet-400 m-1"><IoIosArrowDown className="text-2xl" /></div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 bg-violet-300 rounded-lg w-32">
-                                <li onClick={()=>handleFilter("All")}><a>All</a></li>
-                                <li onClick={()=>handleFilter("Easy")}><a>Easy</a></li>
-                                <li onClick={()=>handleFilter("Medium")}><a>Medium</a></li>
-                                <li onClick={()=>handleFilter("Hard")}><a>Hard</a></li>
+                                <li onClick={() => handleFilter("All")}><a>All</a></li>
+                                <li onClick={() => handleFilter("Easy")}><a>Easy</a></li>
+                                <li onClick={() => handleFilter("Medium")}><a>Medium</a></li>
+                                <li onClick={() => handleFilter("Hard")}><a>Hard</a></li>
                             </ul>
                         </div>
                     </button>
@@ -106,14 +117,14 @@ const Assignment = () => {
                                     <div className='flex items-center justify-between'>
                                         <div className="flex items-center"><RiPriceTagLine className='mr-2'></RiPriceTagLine> <span className='font-bold mr-2'>Marks:</span> <span className='font-extrabold'>{assignment.marks}</span></div>
                                         <div>
-                                           <Link to={`/update/${assignment._id}`}> <button className="p-2 bg-gray-200 rounded-xl hover:bg-gray-300" title="Update Assignment"><GrEdit className="text-lg" /></button></Link>
+                                            <Link to={`/update/${assignment._id}`}> <button className="p-2 bg-gray-200 rounded-xl hover:bg-gray-300" title="Update Assignment"><GrEdit className="text-lg" /></button></Link>
                                         </div>
                                     </div>
 
                                     <div className="flex items-center justify-between">
                                         <div className='flex items-center'><FaRegStar className='mr-2'></FaRegStar><span className='font-bold mr-2'>DiffiltyLevel:</span> <span className='font-extrabold'>{assignment.difficultyLevel}</span></div>
                                         <div>
-                                            <button onClick={() => handleDelete(assignment._id)} className="p-2 bg-gray-200 rounded-xl hover:bg-gray-300" title="Delete Assignment"><RiDeleteBin6Line className="text-lg" /></button>
+                                            <button onClick={() => handleDelete(assignment._id, assignment.userEmail)} className="p-2 bg-gray-200 rounded-xl hover:bg-gray-300" title="Delete Assignment"><RiDeleteBin6Line className="text-lg" /></button>
                                         </div>
                                     </div>
                                 </div>
