@@ -3,9 +3,9 @@ import { useLoaderData } from "react-router-dom";
 const MyAssignment = () => {
     const myAssignments = useLoaderData();
     return (
-        <div className="p-4 lg:mx-24 h-screen lg:p-16 ">
-            <div className="container p-4 lg:p-12 mx-auto text-blue-400 bg-gray-200 rounded-lg">
-                <h2 className="mb-7 text-3xl text-center font-semibold text-purple-500 leading-tight -mt-5">My Submitted Assignments</h2>
+        <div className="p-4 lg:mx-24 lg:p-10 ">
+            <div className="container p-4 lg:p-16 mx-auto text-blue-400 bg-gray-200 rounded-lg">
+                <h2 className="mb-10 text-3xl text-center font-semibold text-purple-500 leading-tight -mt-10">My Submitted Assignments</h2>
                 <div className="overflow-x-auto">
                     <table className="min-w-full text-sm">
                         <colgroup>
@@ -33,7 +33,7 @@ const MyAssignment = () => {
                             <td className="p-3 text-center">
                                 <p>{myAssignment.marks}</p>
                             </td>
-                            <td className="p-3 text-center">
+                            <td className="p-3 text-center font-bold">
                                 <p>45</p>
                             </td>
                            

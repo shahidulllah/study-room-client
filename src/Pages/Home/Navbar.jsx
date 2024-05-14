@@ -38,7 +38,7 @@ const Navbar = () => {
             user &&
             <>
                 <li><NavLink to='/createAssignment'>Create Assignments</NavLink></li>
-                <li><NavLink to='/addItemForm'>Pending Assignments</NavLink></li>
+                <li><NavLink to='/pendingAssignment'>Pending Assignments</NavLink></li>
             </>
         }
 
