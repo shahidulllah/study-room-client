@@ -1,7 +1,19 @@
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Components/AuthProvider";
 
 const MyAssignment = () => {
-    const myAssignments = useLoaderData();
+     const {user} = useContext(AuthContext);
+    const [myAssignments, setMyAssignments] = useState([]);
+
+    useEffect(()=>{
+        fetch(`${import.meta.env.VITE_API_URL}/submited/${user.email}`)
+        .then(res =>res.json())
+        .then(data => {
+            setMyAssignments(data);
+            console.log(data)
+        })
+    },[])
+
     return (
         <div className="p-4 lg:mx-24 lg:p-10 ">
             <div className="container p-4 lg:p-16 mx-auto text-blue-400 bg-gray-200 rounded-lg">
@@ -34,11 +46,11 @@ const MyAssignment = () => {
                                 <p>{myAssignment.marks}</p>
                             </td>
                             <td className="p-3 text-center font-bold">
-                                <p>45</p>
+                                <p>{myAssignment.obtainMarks}</p>
                             </td>
                            
                             <td className="p-3 text-center">
-                                <p>You are doing well.</p>
+                                <p>{myAssignment.feedback}</p>
                             </td>
                             <td className="p-3 text-right">
                                 <span className="px-3 py-1 font-semibold rounded-md bg-violet-400 text-gray-900">

@@ -60,7 +60,6 @@ export const router = createBrowserRouter([
             {
                 path: "/myAssignment",
                 element: <PrivateRoute><MyAssignment></MyAssignment></PrivateRoute>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/submited`)
             },
             {
                 path: "/pendingAssignment",

@@ -19,10 +19,12 @@ const TakeAssignment = () => {
         const notes = form.notes.value;
         const title = takeAssignment.title;
         const marks = takeAssignment.marks;
+        const obtainMarks = "-";
+        const feedback = "-"
         const status = "Pending";
         const userEmail = user.email;
 
-        const takeAssign = {title, marks, userEmail, status, assignmentLink, notes};
+        const takeAssign = {userEmail,title, marks, obtainMarks,feedback, status, assignmentLink, notes};
 
         //send submited assignment to server
         fetch(`${import.meta.env.VITE_API_URL}/submited`, {

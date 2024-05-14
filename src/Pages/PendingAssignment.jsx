@@ -7,6 +7,7 @@ const PendingAssignment = () => {
     const { user } = useContext(AuthContext);
     const userName = user.displayName;
     const submitedAssignments = useLoaderData();
+    console.log(submitedAssignments);
 
     return (
         <div className="lg:mx-24 p-4 lg:p-12">

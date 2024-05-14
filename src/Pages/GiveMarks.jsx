@@ -1,20 +1,44 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const GiveMarks = () => {
     const assignment = useLoaderData();
     const { id } = useParams();
     const markingAssignment = assignment.find(a => a._id == id);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
    
 
     const handleGiveMark = e => {
         e.preventDefault()
         const form = e.target;
-        const mark = form.mark.value;
+        const marks = form.marks.value;
         const feedback = form.feedback.value;
-        const giveMark = { mark, feedback };
+        const status = "Completed";
+        const giveMark = { marks, feedback, status };
         console.log(giveMark);
+
+         //send given marks to server
+         fetch(`${import.meta.env.VITE_API_URL}/marks`, {
+            method: 'POST',
+            headers: {
+             'content-type' : 'application/json'
+            },
+            body: JSON.stringify(giveMark) 
+         })
+         .then(res => res.json())
+         .then (data => {
+             console.log(data)
+             if (data.insertedId) {
+                 Swal.fire({
+                     title: 'Success!',
+                     text: 'Marks is given Successfully!',
+                     icon: 'success',
+                     confirmButtonText: 'Done'
+                 })
+                 navigate('/pendingAssignment')
+             }
+         })
     }
 
     return (
@@ -30,7 +54,7 @@ const GiveMarks = () => {
                         <div className="flex flex-col items-center space-y-3">
                             <div className="lg:w-6/12">
                                 <label htmlFor="">Give Marks:</label> <br />
-                                <input type="text" className="input w-full" name="mark" placeholder="Give your marks here.." required/>
+                                <input type="text" className="input w-full" name="marks" placeholder="Give your marks here.." required/>
                             </div>
                             <div>
                                 <label htmlFor="">Feedback:</label><br />
