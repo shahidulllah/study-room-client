@@ -82,7 +82,7 @@ const Register = () => {
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="email" className="block text-sm">E-mail</label>
-                            <input type="email" name="email" id="email" placeholder="example@gamil.com" className=" input w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                            <input type="email" name="email" id="email" placeholder="example@gamil.com" className=" input w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required/>
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
