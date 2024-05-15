@@ -12,7 +12,6 @@ const TakeAssignment = () => {
     const navigate = useNavigate();
 
     const handleTakeAssignment = e => {
-        if(user.email)
         e.preventDefault();
         const form = e.target;
         const assignmentLink = form.pdfLink.value;

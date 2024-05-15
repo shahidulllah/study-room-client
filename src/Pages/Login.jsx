@@ -45,7 +45,6 @@ const Login = () => {
 
     // GoogleLogin
     const handleGoogleLogin = () => {
-        console.log(googleLogin)
         googleLogin()
             .then(result => {
                 console.log(result.user);
@@ -58,7 +57,6 @@ const Login = () => {
 
     // GitHubLogin
     const handleGitHubLogin = () => {
-       
         gitHubLogin()
             .then(result => {
                 console.log(result.user);
