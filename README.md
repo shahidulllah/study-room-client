@@ -1,8 +1,35 @@
-# React + Vite
+# Study Room
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+Study Room is a web application designed to provide users with a platform to manage their study schedules, join study groups, and track their progress. The application aims to enhance the learning experience by offering features that support collaborative and individual study needs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Live Link
+- [Study Room Application](https://ass11-study-room.web.app)
+
+### GitHub Repositories
+- [Client Repository](https://github.com/shahidulllah/study-room-client)
+- [Server Repository](https://github.com/shahidulllah/study-room-server)
+
+## Features
+
+- User authentication and authorization
+- Schedule and manage study sessions
+- Join and create study groups
+- Track study progress and goals
+- Responsive design for seamless use on various devices
+
+## Technologies Used
+
+- **Frontend:** HTML, CSS, Tailwind, JavaScript, React
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+
+## Installation
+
+### Prerequisites
+
+- Node.js
+- npm (Node Package Manager)
+- MongoDB
+
