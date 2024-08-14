@@ -6,21 +6,22 @@ const GiveMarks = () => {
     const assignment = useLoaderData();
     const { id } = useParams();
     const markingAssignment = assignment.find(a => a._id == id);
+    console.log(markingAssignment._id)
     const navigate = useNavigate();
    
 
     const handleGiveMark = e => {
         e.preventDefault()
         const form = e.target;
-        const marks = form.marks.value;
+        const obtainMarks = form.marks.value;
         const feedback = form.feedback.value;
         const status = "Completed";
-        const giveMark = { marks, feedback, status };
+        const giveMark = { obtainMarks, feedback, status };
         console.log(giveMark);
 
-         //send given marks to server
-         fetch(`${import.meta.env.VITE_API_URL}/marks`, {
-            method: 'POST',
+         //Update given marks to server
+         fetch(`${import.meta.env.VITE_API_URL}/submited/${markingAssignment._id}`, {
+            method: 'PUT',
             headers: {
              'content-type' : 'application/json'
             },
@@ -29,14 +30,14 @@ const GiveMarks = () => {
          .then(res => res.json())
          .then (data => {
              console.log(data)
-             if (data.insertedId) {
+             if (data.modifiedCount > 0) {
                  Swal.fire({
                      title: 'Success!',
                      text: 'Marks is given Successfully!',
                      icon: 'success',
                      confirmButtonText: 'Done'
                  })
-                 navigate('/pendingAssignment')
+                 navigate('')
              }
          })
     }

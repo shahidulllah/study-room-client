@@ -89,7 +89,7 @@ const Assignment = () => {
             {/* Filter */}
             <div className="flex justify-center">
                 <div className="flex justify-center w-6/12 divide-x rounded bg-violet-400 text-gray-800 divide-gray-700">
-                    <button type="button" className="px-8 py-3 font-semibold text-lg flex items-center gap-3"><PiUserList className="text-2xl" /> Filtered Assignments</button>
+                    <button type="button" className="px-4 lg:px-8 lg:py-3 font-semibold text-lg flex items-center gap-3"><PiUserList className="text-2xl hidden" /> Filtered Assignments</button>
                     <button type="button" title="Toggle dropdown" className="p-3">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className=" bg-violet-400 m-1"><IoIosArrowDown className="text-2xl" /></div>
