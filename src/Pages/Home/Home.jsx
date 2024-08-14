@@ -7,12 +7,16 @@ import Team from "./Team";
 
 const Home = () => {
     return (
-        <div className="p-4 lg:mx-24">     
-           <Banner></Banner>
-           <Feature></Feature>
-           <FeatureCard></FeatureCard>
-           <Faq></Faq>
-           <Team></Team>
+        <div>
+            <div>
+            <Banner></Banner>
+            </div>
+            <div className="p-4 lg:mx-24">
+                <Feature></Feature>
+                <FeatureCard></FeatureCard>
+                <Faq></Faq>
+                <Team></Team>
+            </div>
         </div>
     );
 };
