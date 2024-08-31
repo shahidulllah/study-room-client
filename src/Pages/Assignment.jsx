@@ -13,9 +13,11 @@ import { AuthContext } from "../Components/AuthProvider";
 const Assignment = () => {
     const { user } = useContext(AuthContext)
     const assignments = useLoaderData();
+    console.log(assignments);
 
 
     const [displayAssign, setDisplayAssign] = useState(assignments);
+    console.log(displayAssign);
 
     const handleFilter = e => {
 
