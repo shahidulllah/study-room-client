@@ -72,7 +72,6 @@ const Update = () => {
           <fieldset className="grid grid-cols-2 gap-6 p-6 lg:p-16 rounded-md shadow-sm bg-gray-600">
             <div className="space-y-2 col-span-full lg:col-span-1">
               <p className="font-medium text-4xl ">Update Assignment</p>
-              {/* <p className="text-xs">Credibly create dynamic assignment after long-term high-impact infrastructures. Synergistically provide.</p> */}
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full sm:col-span-3">
