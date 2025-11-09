@@ -17,6 +17,7 @@ const Assignment = () => {
   const [displayAssign, setDisplayAssign] = useState(assignments);
   console.log(displayAssign);
 
+  //Filtering handling
   const handleFilter = (e) => {
     console.log(e);
     if (e === "All") {
@@ -39,6 +40,7 @@ const Assignment = () => {
     }
   };
 
+  //Handle delete
   const handleDelete = (id, userEmail) => {
     if (userEmail !== user.email) {
       Swal.fire({
