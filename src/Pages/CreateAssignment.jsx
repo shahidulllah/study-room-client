@@ -27,7 +27,6 @@ const CreateAssignment = () => {
       date,
       userEmail,
     };
-    console.log(assignment);
 
     //send assignment to server
     fetch(`${import.meta.env.VITE_API_URL}/assignments`, {
